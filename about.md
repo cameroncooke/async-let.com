@@ -1,6 +1,6 @@
 ---
 layout: default
-title: About Long Haul
+title: About Async Let
 ---
 
 <div class="post">
