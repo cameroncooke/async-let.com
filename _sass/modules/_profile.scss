@@ -1,0 +1,17 @@
+// Profile page styles
+.profileImage {
+  width: 350px;
+  height: 350px;
+  display: block;
+  margin: 0 auto 20px auto;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 100%, 10% 100%);
+}
+
+.socialLinks a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.socialLinks a:hover {
+  text-decoration: underline;
+}
