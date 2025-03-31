@@ -1,5 +1,5 @@
 title: Async Let
-description: Long Form Jekyll theme built with SASS
+description: "Articles about Swift, iOS and indie projects delivered asynchronously await!"
 
 url: https://async-let.com
 # Only necessary when hosting your site in a sub-directory. Project sites hosted on GitHub Pages are the common use-case of this variable.
@@ -21,7 +21,7 @@ paginate: 5
 navigation:
     - title: Home
       url: /index.html
-    - title: About
+    - title: About Me
       url: /about
 
 social:
