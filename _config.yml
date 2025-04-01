@@ -6,9 +6,7 @@ url: https://async-let.com
 baseurl: # Ex: /project-page
 paginate_path: "blog/page:num/"
 permalink: blog/:title/
-
-# Header Option
-# header: large
+future: false
 
 sass:
     style: compressed
