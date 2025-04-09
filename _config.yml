@@ -1,7 +1,7 @@
 title: Async Let
 description: "Articles about Swift, iOS and indie projects delivered asynchronously await!"
 
-url: https://async-let.com
+url: https://www.async-let.com
 # Only necessary when hosting your site in a sub-directory. Project sites hosted on GitHub Pages are the common use-case of this variable.
 baseurl: # Ex: /project-page
 paginate_path: "blog/page:num/"
