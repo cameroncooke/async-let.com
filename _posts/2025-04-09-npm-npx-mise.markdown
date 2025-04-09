@@ -6,7 +6,7 @@ description: "How to use npm, npx, and mise to run Node.js packages without inst
 image: packages.png
 ---
 
-<p class="intro"><span class="dropcap">D</span>istributing developer tools can be a challenge. How do you make your tools accessible without requiring users to jump through complex installation hoops? I recently faced this exact problem with my  project <a href="/blog/xcodebuild-mcp/">XcodeBuild MCP</a> and discovered an elegant solution thanks to a suggestion from @pepicrft.</p>
+<p class="intro"><span class="dropcap">D</span>istributing developer tools can be a challenge. How do you make your tools accessible without requiring users to jump through complex installation hoops? I recently faced this exact problem with my  project <a href="/blog/xcodebuild-mcp/">XcodeBuild MCP</a> and discovered an elegant solution thanks to a suggestion from <a href="https://twitter.com/pepicrft">@pepicrft</a>.</p>
 
 ## npm package
 
@@ -90,8 +90,8 @@ Configuring an MCP client (like Cursor, Claude Desktop, or Windsurf) to use Xcod
 
 ## Wrapping Up
 
-I'm really happy with how this all turned out for XcodeBuildMCP. What started as a simple suggestion from @pepicrft has made the tool so much easier for people to use. The original version required users to clone the repo, install dependencies, and build the project, now they can be up and running with only one dependency `mise`.
+I'm really happy with how this all turned out for XcodeBuildMCP. What started as a simple suggestion from <a href="https://twitter.com/pepicrft">@pepicrft</a> has made the tool so much easier for people to use. The original version required users to clone the repo, install dependencies, and build the project, now they can be up and running with only one dependency `mise`.
 
 I've learned that distribution is just as important as the tool itself. You can build the most amazing tool in the world, but if people can't easily use it, what's the point?
 
-Thanks again to @pepicrft for this excellent suggestion.
+Thanks again to <a href="https://twitter.com/pepicrft">@pepicrft</a> for this excellent suggestion.
