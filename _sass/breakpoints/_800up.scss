@@ -288,14 +288,12 @@ ABOUT PAGE STYLING
 DARK THEME STYLING
 ***************/
 
-@media (prefers-color-scheme: dark) {
-	body {
-		background-color: black;
-		color: white;
-	}
+body {
+	background-color: black;
+	color: white;
+}
 
-	.content:after,
-	.post .featuredImage:before {
-		background: black;
-	}
+.content:after,
+.post .featuredImage:before {
+	background: black;
 }
