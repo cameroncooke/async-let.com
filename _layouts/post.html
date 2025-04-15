@@ -14,6 +14,10 @@ layout: default
 
   {{ content }}
 
+  {%- if site.gisqus.repo -%}
+  {%- include gisqus_comments.html -%}
+  {%- endif -%}  
+
   <!-- POST NAVIGATION -->
   <footer class="postNav clearfix">
     {%- if page.previous.url -%}
@@ -24,7 +28,3 @@ layout: default
     {%- endif -%}
   </footer>
 </article>
-
-{%- if site.gisqus.repo -%}
-  {%- include gisqus_comments.html -%}
-{%- endif -%}
