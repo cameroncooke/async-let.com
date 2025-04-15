@@ -25,7 +25,21 @@ navigation:
 social:
     github: cameroncooke
     twitter: camsoft2000
-    email: web@cameroncooke.com
+    email: hello@cameroncooke.com
     linkedin: cameroncooke1
 
 google_analytics: "G-SF4FBXKHE3"
+
+gisqus:
+    repo: cameroncooke/async-let.com
+    repo_id: R_kgDOORIzXA
+    category: Comments
+    category_id: DIC_kwDOORIzXM4CpHQW
+    mapping: pathname
+    strict: 0
+    reactions_enabled: 1
+    emit_metadata: 0
+    input_position: top
+    theme: preferred_color_scheme
+    lang: en
+    loading: lazy
