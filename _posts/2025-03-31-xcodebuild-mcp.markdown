@@ -52,3 +52,10 @@ I grew frustrated watching AI agents struggle with outdated or incorrect command
 The superpower of this tool is how it enables AI agents to intelligently read build output and automatically correct issues without constant manual intervention.
 
 I hope you find it as useful, and I'd love to hear your thoughts and feedback via my socials or raise an issue on GitHub if you have found a bug or just want to suggest an improvement.
+
+### Update 14 April 2025
+
+I've been working on a few improvements to XcodeBuild MCP since I wrote this article, read about the new project discovery and run-time log capture features <a href="/blog/xcodebuild-mcp_improvements/">here</a>.
+
+
+
