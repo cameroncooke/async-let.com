@@ -21,6 +21,8 @@ navigation:
       url: /index.html
     - title: About Me
       url: /about
+    - title: XcodeBuild MCP
+      url: /blog/xcodebuild-mcp      
 
 social:
     github: cameroncooke
