@@ -57,5 +57,6 @@ I hope you find it as useful, and I'd love to hear your thoughts and feedback vi
 
 I've been working on a few improvements to XcodeBuild MCP since I wrote this article, read about the new project discovery and run-time log capture features <a href="/blog/xcodebuild-mcp_improvements/">here</a>.
 
+### Update 28 April 2025
 
-
+Read about the new UI automation and screenshot features <a href="/blog/xcodebuild-ui-automation/">here</a>.
