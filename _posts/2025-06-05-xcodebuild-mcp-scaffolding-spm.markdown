@@ -6,62 +6,62 @@ description: "Major updates bring project scaffolding, Swift Package Manager sup
 image: xcodebuildmcp.png
 ---
 
-<p class="intro"><span class="dropcap">S</span>ince my <a href="/blog/xcodebuild-ui-automation/">last update about UI automation</a>, XcodeBuild MCP has evolved significantly. The headline features? Project scaffolding that helps agents create new apps from scratch, full Swift Package Manager integration, and a more powerful UI automation system powered by AXe.</p>
+<p class="intro"><span class="dropcap">S</span>ince my <a href="/blog/xcodebuild-ui-automation/">last update about UI automation</a>, XcodeBuild MCP has evolved significantly. Three major capabilities now shape what AI agents can achieve with Swift projects: project scaffolding for creating apps from scratch, comprehensive Swift Package Manager integration, and a redesigned UI automation system powered by AXe.</p>
 
 ## Project Scaffolding: From Zero to App
 
-With the new scaffolding tools, agents can now create complete iOS and macOS projects from scratch:
+The new scaffolding tools address a fundamental gap in agent-driven development: creating projects from scratch. Previously, agents could only work with existing codebases. Now they can generate complete iOS and macOS projects:
 
-- **Generate complete project structures** with sensible defaults
-- **Create iOS and macOS apps** using customisable templates
-- **Set up proper folder hierarchies** following Apple's best practices
-- **Configure build settings** appropriately for different project types
+- **Generate project structures** with sensible defaults for different app types
+- **Configure build settings** appropriately for iOS, macOS, and framework targets
+- **Set up folder hierarchies** following Apple's established conventions
+- **Apply templates** that stay current through GitHub release distribution
 
-The scaffolding system pulls templates from GitHub releases, ensuring they're always up to date while allowing for local customisation when needed. This means agents can now handle requests like "Create a new iOS app with SwiftUI" without any manual project setup.
+When you ask an agent to "Create a new iOS app with SwiftUI," it can now deliver a complete, buildable project without any manual intervention. The templates live in external repositories, downloaded on-demand and cached locally, which keeps the core tool lightweight while ensuring templates reflect current best practices.
 
 <video width="100%" controls>
   <source src="/assets/videos/xcodebuild-mcp/project-scaffolding-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-## Swift Package Manager: Full Integration
+## Swift Package Manager: Beyond Dependencies
 
-Modern Swift development revolves around packages, and XcodeBuild MCP now speaks SPM fluently. The new Swift Package tools allow agents to:
+Swift Package Manager has become central to modern Swift development, yet most tooling still assumes Xcode project files. XcodeBuild MCP now provides comprehensive SPM support that goes well beyond dependency management:
 
-- **Build and test** Swift packages directly
-- **Run executables** from package products  
-- **Clean build artifacts** when needed
-- **List available products and targets**
-- **Manage running processes** with proper lifecycle control
+- **Build and test** Swift packages directly using `swift build` and `swift test`
+- **Execute package products** with proper argument passing and environment control
+- **Clean build artifacts** selectively or completely
+- **Inspect package structure** to understand available products and targets
+- **Manage running processes** with lifecycle controls for long-running executables
 
-This isn't just about dependency management: agents can now work with pure Swift Package projects without needing an `.xcodeproj` file at all.
+This enables agents to work with pure Swift Package projects that have no `.xcodeproj` file. Whether you are building command-line tools, libraries, or even server-side Swift applications, agents can now handle the complete development workflow without requiring traditional Xcode project structures.
 
-## UI Automation Simplified with AXe
+## UI Automation Remastered with AXe
 
-The UI automation features have graduated from beta with a complete overhaul powered by [AXe](https://github.com/cameroncooke/AXe). This purpose-built CLI tool transforms how agents interact with iOS simulators:
+The UI automation capabilities have graduated from beta with a complete architectural overhaul. I replaced the previous multi-dependency approach with [AXe](https://github.com/cameroncooke/AXe), a purpose-built CLI tool that solves the complexity problem head-on:
 
-- **Single binary solution**: No more juggling multiple dependencies, Python environments, or Homebrew packages
-- **Direct CLI integration**: Works seamlessly with XcodeBuildMCP without client/server complexity
-- **Rich gesture library**: Built-in presets for common patterns like scrolling, edge swipes, and multi-touch
-- **Precise timing control**: Configure exact delays and durations for complex UI workflows
-- **Intelligent automation**: Coordinate helpers and gesture presets make interactions more natural
+- **Single binary dependency**: No more coordinating Python environments, Homebrew packages, and multiple system requirements
+- **Direct CLI integration**: Eliminates client-server complexity that often caused reliability issues
+- **Rich gesture vocabulary**: Built-in support for common iOS patterns like edge swipes, multi-touch gestures, and precise scrolling
+- **Configurable timing**: Fine-tune delays and durations for complex UI sequences that depend on animations
+- **Coordinate intelligence**: Helper functions that understand iOS screen layouts and common UI element positioning
 
-AXe's focused approach means agents can now perform sophisticated UI automation with a single, lightweight tool that's designed specifically for integration with other developer tooling.
+The difference is architectural: where the previous solution required agents to orchestrate multiple tools, AXe provides a unified interface specifically designed for programmatic control. This makes UI automation more reliable and significantly easier to integrate with other development tooling.
 
 <video width="100%" controls>
   <source src="/assets/videos/xcodebuild-mcp/axe-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
-## Developer Experience Improvements
+## Behind-the-Scenes Improvements
 
-### Incremental Builds (Experimental)
+### Incremental Builds Save Time
 
-Building large projects repeatedly can eat up time. The new experimental incremental build support only recompiles what's changed, with early testing showing up to 70% faster builds for iterative workflows.
+Large Swift projects can take significant time to build repeatedly during development. The new experimental incremental build support addresses this by only recompiling changed sources. Early testing shows build time reductions of up to 70% for typical iterative development workflows.
 
-### Selective Tool Registration
+### Selective Tool Control
 
-Control exactly which tools your agents can access using environment variables:
+Different development environments have different security and complexity requirements. You can now control exactly which capabilities are available to agents using environment variables:
 
 ```json
 {
@@ -77,58 +77,57 @@ Control exactly which tools your agents can access using environment variables:
 }
 ```
 
-### Streamlined Installation
+This is particularly useful in team environments where you might want UI automation disabled but still allow build and test operations.
 
-While the core installation remains straightforward with `npx`, some AI editors now support one-click installation:
+### Editor Integration
 
+Some AI-powered editors now provide direct installation support, though the standard `npx` approach remains the most reliable:
 
 [![Install MCP Server](https://cursor.com/deeplink/mcp-install-light.svg)](https://cursor.com/install-mcp?name=XcodeBuildMCP&config=eyJjb21tYW5kIjoibnB4IC15IHhjb2RlYnVpbGRtY3BAbGF0ZXN0In0%3D)
 [<img src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Server&color=0098FF" alt="Install in VS Code">](https://insiders.vscode.dev/redirect/mcp/install?name=XcodeBuildMCP&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22xcodebuildmcp%40latest%22%5D%7D)
 [<img alt="Install in VS Code Insiders" src="https://img.shields.io/badge/VS_Code_Insiders-VS_Code_Insiders?style=flat-square&label=Install%20Server&color=24bfa5">](https://insiders.vscode.dev/redirect/mcp/install?name=XcodeBuildMCP&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22xcodebuildmcp%40latest%22%5D%7D&quality=insiders)
 
-## Simplified Installation with npx
+## Installation Evolution: From mise to npx
 
-Previously, I recommended using `mise` for installation. Now, XcodeBuild MCP embraces `npx` for an even simpler setup that automatically fetches the latest version:
+I previously recommended using `mise` for installation, which required version management and local binaries. The current approach uses `npx` for a simpler setup that eliminates version management entirely:
 
 ```json
 {
   "mcpServers": {
     "XcodeBuildMCP": {
       "command": "npx",
-      "args": [
-        "-y",
-        "xcodebuildmcp@latest",
-      ]
+      "args": ["-y", "xcodebuildmcp@latest"]
     }
   }
 }
 ```
 
-The benefits of `npx` over the previous `mise` approach:
-- **Always up to date**: Automatically uses the latest published version
-- **No local installation**: Runs directly from npm registry
-- **Zero maintenance**: No need to manually update versions
-- **Cleaner setup**: No build steps or dependency management
+Why the change? The `npx` approach solves several practical problems:
+- **Automatic updates**: You always get the latest published version without manual intervention
+- **No local state**: Runs directly from the npm registry without cluttering your system
+- **Simplified maintenance**: Eliminates the need to track and update tool versions
+- **Cleaner setup**: No build steps, compilation, or dependency resolution required
 
-For those who prefer version pinning or local installations, the traditional methods still work. Check the [GitHub README](https://github.com/cameroncooke/XcodeBuildMCP) for all installation options.
+If you prefer version pinning or have specific deployment requirements, the traditional installation methods remain available. The [GitHub README](https://github.com/cameroncooke/XcodeBuildMCP) documents all supported approaches.
 
 ## System Requirements
 
-To use all the latest features:
+The latest features require updated system dependencies:
 
-- **macOS 14.5+** (up from 14.0)
-- **Xcode 16.x** 
-- **Node.js 18.x** (up from 16.x)
-- **AXe 1.0.0** (optional, for UI automation)
+- **macOS 14.5+** (increased from 14.0 for better Simulator support)
+- **Xcode 16.x** (current stable release)
+- **Node.js 18.x** (increased from 16.x for modern npm features)
+- **AXe 1.0.0** (optional, required only for UI automation capabilities)
 
+## Looking Forward
 
-## Wrapping Up
+XcodeBuild MCP now spans the complete iOS development lifecycle: from initial project creation through building, testing, and UI verification. The combination of project scaffolding, comprehensive Swift Package Manager support, and simplified UI automation represents a substantial step forward in what AI agents can accomplish with Swift projects.
 
-From project creation to UI testing, XcodeBuild MCP now covers the entire iOS development lifecycle. The addition of project scaffolding, Swift Package Manager support, and enhanced UI automation with AXe represents a significant leap forward in what AI agents can achieve with Xcode projects.
+These capabilities open new possibilities for agent-driven development workflows that I am eager to explore further. If you experiment with these features, I would welcome your feedback and contributions on [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).
 
-I'm excited to see what you build with these new capabilities. As always, feedback and contributions are welcome on [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).
+### Previous Updates
 
-For the complete journey of XcodeBuild MCP:
+For the complete evolution of XcodeBuild MCP:
 - [Introducing XcodeBuild MCP](/blog/xcodebuild-mcp/)
 - [Project Discovery & Log Capture](/blog/xcodebuild-mcp_improvements/)
 - [UI Automation](/blog/xcodebuild-ui-automation/)
