@@ -60,3 +60,7 @@ I've been working on a few improvements to XcodeBuild MCP since I wrote this art
 ### Update 28 April 2025
 
 Read about the new UI automation and screenshot features <a href="/blog/xcodebuild-ui-automation/">here</a>.
+
+### Update 5 June 2025
+
+Major update! XcodeBuild MCP now includes project scaffolding, Swift Package Manager support, and enhanced UI automation with AXe. Read about these improvements <a href="/blog/xcodebuild-mcp-scaffolding-spm/">here</a>.
