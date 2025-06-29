@@ -30,7 +30,7 @@ image: filename.png  # Optional, stored in /assets/img/
 ### Content Formatting
 - First paragraph uses dropcap: `<p class="intro"><span class="dropcap">F</span>irst letter capitalized...</p>`
 - Use UK English spelling
-- Avoid em-dashes, use colons instead
+- Avoid em-dashes and semicolons: use colons, parentheses, or separate sentences instead
 - Links in HTML blocks must use `<a href="">` tags, not Markdown `[text](url)`
 - Images: Store in `/assets/img/`
 - Videos: Store in `/assets/videos/` organized by topic (e.g., `/assets/videos/xcodebuild-mcp/`)
