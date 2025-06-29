@@ -1,0 +1,51 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Project Structure Guide
+
+This is a Jekyll-based blog focused on Swift development, iOS development, and Model Context Protocol (MCP) tools.
+
+## Core Configuration
+- **Style Guide**: [CLAUDE.md](mdc:CLAUDE.md) - **PRIMARY** content style guide and development commands
+- **Main Config**: [_config.yml](mdc:_config.yml) - Site configuration including title, description, navigation, and social links
+- **Gemfile**: [Gemfile](mdc:Gemfile) - Ruby dependencies for Jekyll
+- **Package.json**: [package.json](mdc:package.json) - Node.js dependencies for build tools (Gulp, SASS, BrowserSync)
+
+## Content Structure
+- **Posts**: [_posts/](mdc:_posts/) - Blog posts in Markdown format with YYYY-MM-DD-title.markdown naming
+- **Drafts**: [_drafts/](mdc:_drafts/) - Unpublished blog posts
+- **Static Pages**: 
+  - [index.html](mdc:index.html) - Home page
+  - [about.md](mdc:about.md) - About page
+  - [articles.md](mdc:articles.md) - Articles listing
+
+## Theme Structure (Long Haul Jekyll Theme)
+- **Layouts**: [_layouts/](mdc:_layouts/) - HTML templates for different page types
+  - [default.html](mdc:_layouts/default.html) - Base layout
+  - [post.html](mdc:_layouts/post.html) - Blog post layout
+- **Includes**: [_includes/](mdc:_includes/) - Reusable HTML partials
+  - [head.html](mdc:_includes/head.html) - HTML head section
+  - [header.html](mdc:_includes/header.html) - Site header
+  - [footer.html](mdc:_includes/footer.html) - Site footer
+- **SASS**: [_sass/](mdc:_sass/) - Stylesheets organized in modules
+  - [_config.scss](mdc:_sass/_config.scss) - SASS configuration and variables
+
+## Assets & Build
+- **Assets**: [assets/](mdc:assets/) - Images (`/assets/img/`), videos (`/assets/videos/`), and compiled CSS/JS
+- **Scripts**: [_scripts/](mdc:_scripts/) - Python scripts for auto-tweeting posts, includes `tweeted_links.log`
+- **Generated**: [_site/](mdc:_site/) - Jekyll-generated static site (ignored in git)
+
+## Key Topics Covered
+- Swift development and iOS programming
+- XcodeBuild MCP server development
+- Swift Package Manager (SPM)
+- UI automation with tools like AXe
+- MCP (Model Context Protocol) development
+
+## Content Guidelines
+- Posts should use front matter with layout, title, date, description, and optional image
+- Focus on technical content about Swift, iOS development, and MCP tools
+- Include code examples and practical demonstrations
+- Use proper markdown formatting with syntax highlighting for Swift code
