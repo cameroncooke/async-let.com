@@ -22,7 +22,7 @@ navigation:
     - title: About Me
       url: /about
     - title: XcodeBuild MCP
-      url: /blog/xcodebuild-mcp      
+      url: https://www.xcodebuildmcp.com
 
 social:
     github: cameroncooke
