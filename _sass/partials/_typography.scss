@@ -96,3 +96,118 @@ blockquote {
     line-height: 1.45833333; // 35px / 24px
   }
 }
+
+// TL;DR sections
+.tldr {
+  background-color: lighten($black, 5%);
+  border-left: 2px solid lighten($grey, 20%);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 3px 3px 0;
+  font-size: 0.9em;
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+  }
+  
+  ul {
+    margin-bottom: 0.8rem;
+    
+    li {
+      margin-bottom: 0.3rem;
+    }
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+}
+
+// Table of Contents
+.toc {
+  background-color: lighten($black, 5%);
+  border-left: 2px solid lighten($grey, 20%);
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 3px 3px 0;
+  font-size: 0.9em;
+  
+  > ul {
+    margin: 0;
+    padding-left: 1rem;
+    
+    li {
+      margin-bottom: 0.3rem;
+      list-style: none;
+      
+      a {
+        text-decoration: none;
+        opacity: 0.8;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+      
+      ul {
+        margin-top: 0.3rem;
+        padding-left: 1rem;
+        
+        li {
+          font-size: 0.9em;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+  }
+}
+
+// Citations and references
+.citations {
+  font-size: 0.85em;
+  line-height: 1.4;
+  color: #666;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  
+  h4 {
+    font-size: 0.9em;
+    margin-bottom: 0.5rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  p {
+    margin-bottom: 0.5rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  a {
+    color: #666;
+    
+    &:hover {
+      color: #333;
+    }
+  }
+}

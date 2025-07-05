@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bundle update:*)",
+      "Bash(bundle install:*)"
+    ],
+    "deny": []
+  }
+}
