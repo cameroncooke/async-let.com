@@ -10,7 +10,8 @@ title: Profile
     <div class="socialLinks">
       <a href="https://twitter.com/camsoft2000">Twitter</a> |
       <a href="https://github.com/cameroncooke">GitHub</a> |
-      <a href="https://linkedin.com/in/cameroncooke1">LinkedIn</a>
+      <a href="https://linkedin.com/in/cameroncooke1">LinkedIn</a> |
+      <a href="https://www.camsoft2000.com">Hire me</a>
     </div>
   </div>
   <img src="{{ '/assets/img/profile-image.png' | relative_url }}" alt="Profile Image" class="profileImage">
