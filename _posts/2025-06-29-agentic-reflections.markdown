@@ -8,6 +8,8 @@ image: ai-mirrage.png
 
 <p class="intro"><span class="dropcap">O</span>ver the past few weeks, I have found myself reflecting deeply on my experiences with AI agentic coding tools like Cursor and specifically Claude Code. Initially, these tools excited me greatly because they promised the potential to accelerate my product development, eliminate mundane tasks, and allow me to create software that previously seemed beyond my reach due to time constraints.</p>
 
+<p><em>Update 10 August 2025:</em> I wrote a follow-up exploring how I am actively rebalancing family life with AI-driven momentum: <a href="/blog/family-fomo-and-ai/">Finding Balance in the AI Boom: Family, FOMO, and My Limits</a>.</p>
+
 However, recently I have begun to feel differently. While undeniably impressive in capability, these tools have started to take a significant personal toll. Instead of reducing my coding workload, I now find myself investing considerable time mastering the art of AI collaboration: developing sophisticated strategies to work around inherent limitations. Rather than writing code directly, I spend my hours engineering environments to make these limited AI systems effective collaborators.
 
 <blockquote>"I traded the craft of coding for the constant coordination of AI workflows. My evenings and weekends are now dominated by agent supervision."</blockquote>
