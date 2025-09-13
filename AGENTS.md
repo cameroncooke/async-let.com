@@ -37,7 +37,7 @@ image: filename.png  # Optional, stored in /assets/img/
 
 ### Writing Style & Tone
 
-Maintain a knowledgeable, clear, and engaging human writing style suitable for an expert developer sharing knowledge, opinions, and project updates. 
+Maintain a knowledgeable, clear, and engaging human writing style suitable for an expert developer sharing knowledge, opinions, and project updates.
 
 **Core Principles:**
 - **Human, not AI-clichéd**: Use natural language with varied sentence structure. Avoid overly formal constructions and AI-esque phrasing
@@ -50,6 +50,15 @@ Maintain a knowledgeable, clear, and engaging human writing style suitable for a
 - **Practical focus**: Frame explanations from a developer-centric perspective, relating back to building applications
 - **Real benefits**: Focus on actual problems solved rather than theoretical concepts
 - **Avoid hyperbole**: Do not oversell features or claim things were "highly requested" without evidence
+
+#### Personal essays and reflections (house style)
+- Write as a personal account, not a prescription; avoid telling readers what they should do
+- Use first-person singular; add “for me”/“in my case” when statements could generalise
+- Avoid invitations to debate in reflective pieces; stance is descriptive, not argumentative
+- Prefer chronological narration for "How I Got Here" (hobby → career → current state), with a clear bridge into the present topic
+- Choose softer wordings where nuance matters (e.g., "out of step" instead of "resentful"); avoid corporate terms like "release sprints" in personal contexts
+- Remove ambiguous pronouns by naming referents (e.g., "my full-time job" vs "the work")
+- Show boundaries by example rather than disclaimers; keep tone measured, human, non-preachy
 
 **Engagement:**
 - **Conversational but professional**: Address readers directly ("you", "let us discuss") while maintaining expertise
@@ -65,6 +74,11 @@ Maintain a knowledgeable, clear, and engaging human writing style suitable for a
 ### Linking Between Posts
 - Use relative URLs: `/blog/post-slug/`
 - Update related posts when creating new articles in a series
+
+#### Cross-linking conventions for multi-part posts
+- For follow-ups, add a brief "part two" note under the intro linking back to the prior post
+- Add a reciprocal "Update [DATE]" line near the top of the original post linking forward
+- Keep link copy short and factual; avoid hype
 
 ## Architecture
 
