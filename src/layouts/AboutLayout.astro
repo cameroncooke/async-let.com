@@ -1,0 +1,90 @@
+---
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import Layout from "./Layout.astro";
+import { SITE } from "@/config";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+    avatar?: string;
+    avatarAlt?: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={`${frontmatter.title} | ${SITE.title}`}>
+  <Header />
+  <Breadcrumb />
+  <main id="main-content">
+    <section id="about" class="app-prose mb-28 max-w-app prose-img:border-0">
+      <h1 class="about-title text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
+
+      <!-- Float the avatar so text wraps around it; top aligns with first paragraph -->
+      <figure id="about-avatar" class="about-avatar mt-2 md:mt-6 mb-4 w-40 sm:w-56 md:w-72 lg:w-80 md:float-right md:ms-6">
+        <img
+          src={frontmatter.avatar ?? "/assets/images/profile-image.png"}
+          alt={frontmatter.avatarAlt ?? "Profile image"}
+          class="m-0 block w-full rounded"
+          style="shape-outside: margin-box;" />
+      </figure>
+
+      <slot />
+      <div class="clear-both"></div>
+    </section>
+  </main>
+  <style is:inline>
+    /* Prevent the first paragraph from wrapping around the floated avatar */
+    #about > p:first-of-type { clear: right; }
+    /* Responsive niceties for the floated figure */
+    @media (max-width: 768px) {
+      #about > p:first-of-type { clear: none; }
+    }
+  </style>
+  <script is:inline>
+    // Position the avatar responsively and keep it correct across
+    // client-side navigations (astro:transitions) and resizes.
+    // - Desktop (>=768px): place before first UL (next to bullets)
+    // - Mobile (<768px): place before first paragraph
+    function positionAvatar() {
+      const about = document.getElementById('about');
+      if (!about) return;
+      const fig = about.querySelector('figure.about-avatar');
+      if (!fig) return;
+      const firstUl = about.querySelector('ul');
+      const firstP = about.querySelector('p');
+
+      const isMobile = window.matchMedia('(max-width: 768px)').matches;
+      if (isMobile) {
+        if (firstP && fig !== firstP.previousElementSibling) {
+          firstP.parentNode?.insertBefore(fig, firstP);
+        }
+      } else {
+        if (firstUl && fig !== firstUl.previousElementSibling) {
+          firstUl.parentNode?.insertBefore(fig, firstUl);
+        }
+      }
+    }
+
+    // Run on initial load
+    positionAvatar();
+
+    // Keep a named handler so we can clean it up on route swap
+    const onResize = () => positionAvatar();
+    window.addEventListener('resize', onResize);
+
+    // Re-run after astro client router swaps in new content
+    document.addEventListener('astro:after-swap', positionAvatar);
+    // Clean up when navigating away to avoid duplicate listeners
+    document.addEventListener(
+      'astro:before-swap',
+      () => window.removeEventListener('resize', onResize),
+      { once: true }
+    );
+  </script>
+  <Footer />
+</Layout>

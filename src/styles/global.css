@@ -1,0 +1,303 @@
+@import "tailwindcss";
+@import "./typography.css";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root,
+html[data-theme="light"] {
+  /* Neon — Cool Cyan */
+  --background: #F6FBFF; /* icy, very light */
+  --foreground: #0E1726; /* deep navy for contrast */
+  --accent: #FF2BD1;     /* hot pink (light-mode accent) */
+  --muted: #E6FAFF;      /* pale cyan tint */
+  --border: #C9F3FA;     /* subtle cyan line */
+  /* Link color (light) — darker blue for contrast */
+  --link: #FF2BD1; /* hot pink links for contrast on light */
+  /* Unified heading color (light) */
+  --heading: #111111;
+
+  /* Neon palette (light) */
+  --neon-cyan: #00eaff;
+  --neon-magenta: #A82FC7; /* purply-pink sampled from avatar */
+  --neon-violet: #7a5cff;
+  --neon-yellow: #f9f871;
+  --neon-lime: #39ff14;
+  --accent-gradient: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-violet), var(--neon-yellow));
+  /* Disable global glow variables in light mode */
+  --glow-def: none;
+  --glow-hover: none;
+}
+
+html[data-theme="dark"] {
+  /* Neon — Cool Cyan (dark) */
+  --background: #060B1A; /* near-black blue */
+  --foreground: #E6F7FF; /* frosty text */
+  --accent: #00F5FF;     /* brighter neon cyan */
+  --muted: #0F2233;      /* deep blue panel */
+  --border: #1B4E5A;     /* cool teal line */
+  /* Link color (dark) — neon cyan */
+  --link: var(--neon-cyan);
+  /* Unified heading color (dark) — cyan as requested */
+  --heading: var(--neon-cyan);
+
+  /* Neon palette (dark) */
+  --neon-cyan: #00fff0;
+  --neon-magenta: #A82FC7; /* purply-pink sampled from avatar */
+  --neon-violet: #9d4bff;
+  --neon-yellow: #f9f871;
+  --neon-lime: #39ff14;
+  --accent-gradient: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta), var(--neon-violet), var(--neon-yellow), var(--neon-lime));
+  --glow-def: 0 0 4px color-mix(in srgb, currentColor 60%, transparent), 0 0 10px color-mix(in srgb, currentColor 40%, transparent);
+  --glow-hover: 0 0 6px color-mix(in srgb, currentColor 70%, transparent), 0 0 14px color-mix(in srgb, currentColor 50%, transparent), 0 0 22px color-mix(in srgb, currentColor 40%, transparent);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-accent/75;
+    scrollbar-width: auto;
+    scrollbar-color: var(--color-muted) transparent;
+  }
+  html {
+    @apply overflow-y-scroll scroll-smooth;
+  }
+  body {
+    @apply flex min-h-svh flex-col bg-background font-mono text-foreground selection:bg-accent/75 selection:text-background;
+  }
+  a,
+  button {
+    @apply outline-offset-1 outline-accent focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-dashed;
+  }
+  /* Neon underline that wraps perfectly across multiple lines
+     Uses background + box-decoration-break so each line fragment gets its own underline */
+main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline) {
+    color: inherit;
+    text-decoration: none; /* custom mixed underline below */
+    /* Small-dash cadence */
+    --link-underline-h: 2px;
+    --link-dash: 4px;
+    --link-gap: 3px;
+    --link-solid-start: 38%; /* initial solid coverage */
+    /* Layer 1 (top): solid segment, grows on hover; Layer 2: dashed track under full width */
+    background-image:
+      linear-gradient(var(--link), var(--link)),
+      repeating-linear-gradient(to right,
+        var(--link) 0 var(--link-dash),
+        transparent var(--link-dash) calc(var(--link-dash) + var(--link-gap))
+      );
+    background-repeat: no-repeat, no-repeat;
+    background-size: var(--link-solid-start) var(--link-underline-h), 100% var(--link-underline-h);
+    background-position: 0 100%, 0 100%;
+    padding-bottom: calc(var(--link-underline-h) + 1px);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    /* Default neon blur (standard) */
+    text-shadow: var(--glow-def);
+    transition: background-size 240ms ease, color 200ms ease;
+  }
+  /* Ensure descendant text gets the same immediate glow */
+  main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline) * {
+    text-shadow: var(--glow-def);
+  }
+  main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline):hover {
+    background-size: 100% var(--link-underline-h), 100% var(--link-underline-h);
+    color: var(--accent);
+    text-shadow: var(--glow-hover);
+  }
+  main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline):hover * { text-shadow: var(--glow-hover); }
+
+  /* Light mode: remove link glow entirely */
+  html[data-theme="light"] main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline),
+  html[data-theme="light"] main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline) *,
+  html[data-theme="light"] main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline):hover,
+  html[data-theme="light"] main a[href]:not(.heading-link):not(.tag-chip):not(.no-link-underline):hover * {
+    text-shadow: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    main a[href]:not(.heading-link):not(.tag-chip) { transition: none; }
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+section,
+footer {
+  @apply mx-auto max-w-app px-4;
+}
+
+/* Footer link group spacing + separators */
+footer .footer-links { gap: 0.2rem 0.5rem; }
+footer .footer-links li { display: inline-flex; align-items: center; }
+footer .footer-links li + li::before {
+  content: "·";
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  margin: 0 0.5rem;
+}
+
+/* Footer links: toned-down, readable, minimal */
+footer a.footer-link {
+  color: color-mix(in srgb, var(--foreground) 85%, var(--background));
+  text-decoration: none;
+  border-bottom: 1px dotted color-mix(in srgb, var(--foreground) 35%, transparent);
+  padding-bottom: 2px;
+  opacity: 0.85;
+  text-shadow: none;
+  transition: color 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+footer a.footer-link:hover {
+  color: var(--foreground);
+  border-bottom-color: color-mix(in srgb, var(--accent) 35%, transparent);
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  footer a.footer-link { transition: none; }
+}
+
+  /* Tag chips → use unified link color; hover to accent */
+  .tag-chip { color: var(--link); text-shadow: 0 0 3px color-mix(in srgb, var(--link) 45%, transparent), 0 0 8px color-mix(in srgb, var(--link) 30%, transparent); }
+  .tag-chip:hover { color: var(--accent); text-shadow: 0 0 6px color-mix(in srgb, var(--accent) 65%, transparent), 0 0 14px color-mix(in srgb, var(--accent) 45%, transparent); }
+  html[data-theme="light"] .tag-chip, html[data-theme="light"] .tag-chip:hover { text-shadow: none; }
+}
+
+@utility max-w-app {
+  @apply max-w-3xl;
+}
+
+.active-nav {
+  @apply underline decoration-wavy decoration-2 underline-offset-4;
+}
+
+/* Neon progress bar and subtle page glow */
+.progress-bar {
+  background: var(--neon-magenta) !important;
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--neon-magenta) 60%, transparent),
+    0 0 16px color-mix(in srgb, var(--neon-magenta) 45%, transparent),
+    0 0 24px color-mix(in srgb, var(--neon-magenta) 35%, transparent);
+}
+html[data-theme="light"] .progress-bar { box-shadow: none !important; }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20% -15% -10% -15%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(40rem 40rem at 10% -10%, color-mix(in srgb, var(--neon-magenta) 22%, transparent), transparent 60%),
+    radial-gradient(36rem 36rem at 90% 20%, color-mix(in srgb, var(--neon-cyan) 18%, transparent), transparent 60%),
+    radial-gradient(28rem 28rem at 50% 110%, color-mix(in srgb, var(--neon-violet) 16%, transparent), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+@media (prefers-color-scheme: light) {
+  body::before { opacity: 0.18; }
+}
+/* Light theme: no ambient page glow */
+html[data-theme="light"] body::before { opacity: 0 !important; }
+
+/* Homepage: two-color neon only (cyan + magenta) */
+[data-layout=index] #hero h1 { color: var(--heading); -webkit-text-stroke: 0.75px color-mix(in srgb, var(--foreground) 40%, var(--background)); text-shadow: var(--glow-def); }
+html[data-theme="light"] [data-layout=index] #hero h1 { text-shadow: none; }
+
+/* Post lists: unified headings */
+.post-list h2,
+.post-list h3 { color: var(--heading); text-shadow: var(--glow-def); }
+html[data-theme="light"] .post-list h2,
+html[data-theme="light"] .post-list h3 { text-shadow: none; }
+html[data-theme="light"] .post-list h2,
+html[data-theme="light"] .post-list h3 { text-shadow: none; }
+
+/* Page-specific title tweaks */
+/* About page: keep H1 white in dark, black in light, no glow */
+#about > h1.about-title { color: var(--heading); text-shadow: none; }
+html[data-theme="dark"] #about > h1.about-title { color: var(--foreground); text-shadow: none; }
+
+/* Article page H1: cyan + slight glow on dark; black on light */
+.post-title { color: var(--heading); text-shadow: var(--glow-def); }
+html[data-theme="light"] .post-title { text-shadow: none; }
+
+/* Header nav accents (two-color scheme) */
+.site-title {
+  color: var(--foreground);
+  text-shadow: var(--glow-def);
+  transition: transform 200ms ease;
+}
+.site-title:hover { transform: scale(1.03); animation: neon-pulse 3s ease-in-out infinite alternate; }
+html[data-theme="light"] .site-title, html[data-theme="light"] .site-title:hover { text-shadow: none; animation: none; }
+/* Unified nav link style (DRY): applies to all header anchors */
+.nav-link { color: var(--link); text-shadow: var(--glow-def); }
+/* Ensure cyan nav links in dark mode */
+html[data-theme="dark"] .nav-link { color: var(--neon-cyan); }
+/* Icons inside nav links */
+.nav-icon { stroke: var(--link); filter: url(#glow-cyan) drop-shadow(0 0 2px color-mix(in srgb, var(--link) 35%, transparent)); transition: filter 200ms ease; }
+/* Theme toggle: match link color per theme (cyan on dark, pink on light) */
+.nav-theme { stroke: var(--link); filter: url(#glow-cyan) drop-shadow(0 0 2px color-mix(in srgb, var(--link) 35%, transparent)); transition: filter 200ms ease; }
+
+html[data-theme="light"] .nav-link { text-shadow: none; }
+html[data-theme="light"] .nav-link:hover { text-shadow: none; filter: none; }
+html[data-theme="light"] .nav-icon { filter: none; }
+html[data-theme="light"] header a:hover .nav-icon { filter: none; }
+html[data-theme="light"] .nav-theme { filter: none; }
+html[data-theme="light"] header button:hover .nav-theme { filter: none; }
+
+/* Neon hover glow on nav text links */
+.nav-link:hover {
+  text-shadow:
+    0 0 10px color-mix(in srgb, currentColor 70%, transparent),
+    0 0 18px color-mix(in srgb, currentColor 55%, transparent),
+    0 0 28px color-mix(in srgb, currentColor 45%, transparent);
+  filter:
+    drop-shadow(0 0 6px color-mix(in srgb, currentColor 55%, transparent))
+    drop-shadow(0 0 14px color-mix(in srgb, currentColor 40%, transparent));
+}
+
+/* Neon hover glow on nav icons */
+header a:hover .nav-icon { filter: url(#glow-cyan-strong) drop-shadow(0 0 6px color-mix(in srgb, var(--link) 55%, transparent)); }
+/* Hover glow for theme toggle button (pink) */
+header button:hover .nav-theme {
+  filter: url(#glow-cyan-strong)
+    drop-shadow(0 0 6px color-mix(in srgb, var(--link) 55%, transparent));
+}
+
+/* Active nav keeps underline but no color change override */
+header .active-nav { text-decoration-color: currentColor; }
+/* header inherits .nav-link:hover */
+
+/* Social icons default + hover glow (moderate) */
+a.no-link-underline svg { transition: filter 200ms ease; filter: drop-shadow(0 0 3px color-mix(in srgb, currentColor 45%, transparent)) drop-shadow(0 0 8px color-mix(in srgb, currentColor 35%, transparent)); }
+a.no-link-underline:hover svg { filter: drop-shadow(0 0 6px color-mix(in srgb, currentColor 60%, transparent)) drop-shadow(0 0 12px color-mix(in srgb, currentColor 45%, transparent)); }
+html[data-theme="light"] a.no-link-underline svg,
+html[data-theme="light"] a.no-link-underline:hover svg { filter: none; }
+
+@keyframes neon-pulse {
+  from { text-shadow:
+      0 0 6px color-mix(in srgb, var(--neon-cyan) 40%, transparent),
+      0 0 10px color-mix(in srgb, var(--neon-magenta) 35%, transparent),
+      1px 0 color-mix(in srgb, var(--neon-magenta) 45%, transparent),
+     -1px 0 color-mix(in srgb, var(--neon-cyan) 45%, transparent);
+  }
+  to { text-shadow:
+      0 0 10px color-mix(in srgb, var(--neon-cyan) 65%, transparent),
+      0 0 16px color-mix(in srgb, var(--neon-magenta) 55%, transparent),
+      1px 0 color-mix(in srgb, var(--neon-magenta) 60%, transparent),
+     -1px 0 color-mix(in srgb, var(--neon-cyan) 60%, transparent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-title { animation: none; }
+}
+
+/* Source: https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 1rem;
+}

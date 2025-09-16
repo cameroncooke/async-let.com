@@ -1,0 +1,21 @@
+# Cloudflare Pages / Netlify-style redirects for legacy URLs → new site
+# 301! forces a permanent redirect and stops processing further rules
+
+# Legacy Jekyll post URLs: /blog/:slug/ → /posts/:slug
+/blog/:slug/   /posts/:slug   301!
+/blog/:slug    /posts/:slug   301!
+
+# Legacy blog root and articles listing
+/blog          /posts/        301!
+/blog/         /posts/        301!
+/articles      /posts/        301!
+
+# Legacy paginated list (fallback). For best parity, consider a regex Bulk Redirect.
+# This maps any /blog/pageN to /posts/ (top), preserving content access.
+/blog/page*    /posts/        301!
+
+# Legacy RSS feed → new RSS
+/feed.xml      /rss.xml       301!
+
+# Trailing index.html to clean root
+/index.html    /              301!
