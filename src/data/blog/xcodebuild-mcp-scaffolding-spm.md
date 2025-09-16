@@ -27,7 +27,7 @@ The new scaffolding tools address a fundamental gap in agent-driven development:
 When you ask an agent to "Create a new iOS app with SwiftUI," it can now deliver a complete, buildable project without any manual intervention. The templates live in external repositories, downloaded on-demand and cached locally, which keeps the core tool lightweight while ensuring templates reflect current best practices.
 
 <video width="100%" controls>
-  <source src="/assets/videos/xcodebuild-mcp/project-scaffolding-demo.mp4" type="video/mp4">
+  <source src="https://media.async-let.com/project-scaffolding-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -56,7 +56,7 @@ The UI automation capabilities have graduated from beta with a complete architec
 The difference is architectural: where the previous solution required agents to orchestrate multiple tools, AXe provides a unified interface specifically designed for programmatic control. This makes UI automation more reliable and significantly easier to integrate with other development tooling.
 
 <video width="100%" controls>
-  <source src="/assets/videos/xcodebuild-mcp/axe-demo.mp4" type="video/mp4">
+  <source src="https://media.async-let.com/axe-demo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

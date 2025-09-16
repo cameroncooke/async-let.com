@@ -61,21 +61,21 @@ Each configuration was recorded. You can play the videos directly below or open 
 ### MCP-only session
 
 <video width="100%" controls>
-  <source src="/assets/videos/mcpli-research/mcp-only-session.mp4" type="video/mp4">
+  <source src="https://media.async-let.com/mcp-only-session.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ### Comprehensive CLAUDE.md session
 
 <video width="100%" controls>
-  <source src="/assets/videos/mcpli-research/comprehensive-session.mp4" type="video/mp4">
+  <source src="https://media.async-let.com/comprehensive-session.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
 ### Curated CLAUDE.md session
 
 <video width="100%" controls>
-  <source src="/assets/videos/mcpli-research/curated-session.mp4" type="video/mp4">
+  <source src="https://media.async-let.com/curated-session.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
