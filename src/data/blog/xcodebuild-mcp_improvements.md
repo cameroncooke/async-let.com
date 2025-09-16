@@ -28,4 +28,4 @@ Well now they can! With the new log capture feature, agents can now capture run-
 
 ## Wrapping Up
 
-Is there a killer feature you think would be useful for XcodeBuild MCP? Let me know by [opening an issue](https://github.com/cameroncooke/XcodeBuildMCP/issues/new) . If you want to read my original post for a full background on what XcodeBuild MCP is or how to get started, check it out [here](/blog/xcodebuild-mcp/) or if you just want to try it out, you can get it from [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).
+Is there a killer feature you think would be useful for XcodeBuild MCP? Let me know by [opening an issue](https://github.com/cameroncooke/XcodeBuildMCP/issues/new) . If you want to read my original post for a full background on what XcodeBuild MCP is or how to get started, check it out [here](/posts/xcodebuild-mcp/) or if you just want to try it out, you can get it from [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).

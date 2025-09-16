@@ -68,4 +68,4 @@ The addition of UI automation and screenshot capabilities to XcodeBuild MCP repr
 
 I would love to hear your thoughts and feedback via my socials or raise an issue on GitHub if you have found a bug or just want to suggest an improvement.
 
-If you want to read my original post for a full background on what XcodeBuild MCP is or how to get started, check it out [here](/blog/xcodebuild-mcp/) or if you just want to try it out, you can get it from [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).
+If you want to read my original post for a full background on what XcodeBuild MCP is or how to get started, check it out [here](/posts/xcodebuild-mcp/) or if you just want to try it out, you can get it from [GitHub](https://github.com/cameroncooke/XcodeBuildMCP).

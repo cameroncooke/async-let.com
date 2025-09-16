@@ -2,17 +2,22 @@
 # 301! forces a permanent redirect and stops processing further rules
 
 # Legacy Jekyll post URLs: /blog/:slug/ → /posts/:slug
-/blog/:slug/   /posts/:slug   301!
-/blog/:slug    /posts/:slug   301!
+/blog/:slug/   /posts/:slug   301
+/blog/:slug    /posts/:slug   301
 
 # Legacy blog root and articles listing
-/blog          /posts/        301!
-/blog/         /posts/        301!
-/articles      /posts/        301!
+/blog          /posts/        301
+/blog/         /posts/        301
+/articles      /posts/        301
 
 # Legacy paginated list (fallback). For best parity, consider a regex Bulk Redirect.
 # This maps any /blog/pageN to /posts/ (top), preserving content access.
-/blog/page*    /posts/        301!
+/blog/page*    /posts/        301
+
+# Catch-all: preserve any remaining path segments under /blog → /posts
+# Example: /blog/xcodebuild-mcp/ → /posts/xcodebuild-mcp/
+#          /blog/some/depth → /posts/some/depth
+/blog/*        /posts/:splat  301
 
 # Legacy RSS feed → new RSS
 /feed.xml      /rss.xml       301!

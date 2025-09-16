@@ -133,6 +133,6 @@ These capabilities open new possibilities for agent-driven development workflows
 ### Previous Updates
 
 For the complete evolution of XcodeBuild MCP:
-- [Introducing XcodeBuild MCP](/blog/xcodebuild-mcp/)
-- [Project Discovery & Log Capture](/blog/xcodebuild-mcp_improvements/)
-- [UI Automation](/blog/xcodebuild-ui-automation/)
+- [Introducing XcodeBuild MCP](/posts/xcodebuild-mcp/)
+- [Project Discovery & Log Capture](/posts/xcodebuild-mcp_improvements/)
+- [UI Automation](/posts/xcodebuild-ui-automation/)
