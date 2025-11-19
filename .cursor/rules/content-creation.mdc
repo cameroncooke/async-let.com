@@ -1,0 +1,124 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Content Creation Guidelines
+
+**⚠️ IMPORTANT: Main Style Guide in [CLAUDE.md](mdc:CLAUDE.md)**
+
+This is the primary content style guide for this blog. Always reference [CLAUDE.md](mdc:CLAUDE.md) for authoritative guidance on writing style, tone, and technical conventions.
+
+## Blog Post Structure
+
+### Front Matter Template
+Every blog post in [_posts/](mdc:_posts) should include proper Jekyll front matter:
+
+```yaml
+---
+layout: post
+title: "Your Post Title"
+date: YYYY-MM-DD
+description: "Brief description for SEO and social sharing"
+image: optional-featured-image.png
+---
+```
+
+### Content Structure
+1. **Introduction with Drop Cap**: Use `<p class="intro"><span class="dropcap">F</span>irst letter...</p>` for the opening paragraph
+2. **Clear Headings**: Use H2 (##) for main sections, H3 (###) for subsections
+3. **Code Examples**: Use Swift syntax highlighting with triple backticks
+4. **Media**: Include videos in MP4 format using HTML5 video tags when demonstrating UI/tools
+5. **Linking**: In HTML blocks, use `<a href="">` tags, not Markdown `[text](mdc:url)` format
+6. **Internal Links**: Use relative URLs like `/blog/post-slug/` for linking between posts
+
+### File Naming Convention
+- Use format: `YYYY-MM-DD-title-with-hyphens.markdown`
+- Place in [_posts/](mdc:_posts) directory
+- Drafts go in [_drafts/](mdc:_drafts) without date prefix
+
+## Content Focus Areas
+
+### Primary Topics
+- **Swift Development**: Language features, best practices, new APIs
+- **iOS Development**: App development, UI patterns, platform-specific features
+- **XcodeBuild MCP**: Tool development, MCP server architecture, automation
+- **Developer Tools**: Build systems, testing frameworks, productivity tools
+
+### Writing Style (Follow [CLAUDE.md](mdc:CLAUDE.md))
+- **Human, not AI-clichéd**: Use natural language with varied sentence structure
+- **No contractions**: Use "do not" instead of "don't", "it is" instead of "it's"
+- **Active voice**: Prefer active over passive voice where appropriate
+- **Personal perspective**: Use "I" when sharing experiences or decisions
+- **Conversational but professional**: Address readers directly while maintaining expertise
+- **UK English spelling**: Follow UK conventions throughout
+- **Avoid em-dashes and semicolons**: Use colons, parentheses, or separate sentences instead
+- **Technical but Accessible**: Explain complex concepts clearly
+- **Practical Examples**: Include working code and real-world scenarios
+
+## Code Formatting
+
+### Swift Code Blocks
+```swift
+// Use proper Swift syntax highlighting
+func example() {
+    print("Hello, World!")
+}
+```
+
+### Terminal Commands
+```bash
+# Use bash highlighting for command-line examples
+swift build
+xcodebuild -scheme MyApp
+```
+
+### Configuration Files
+```json
+// Use appropriate syntax highlighting for config files
+{
+  "mcpServers": {
+    "XcodeBuildMCP": {
+      "command": "npx",
+      "args": ["-y", "xcodebuildmcp@latest"]
+    }
+  }
+}
+```
+
+## Media Guidelines
+
+### Images
+- Store in `/assets/img/` directory (as specified in [CLAUDE.md](mdc:CLAUDE.md))
+- Use descriptive filenames
+- Include alt text for accessibility
+- Prefer PNG for screenshots, JPG for photos
+
+### Videos
+- Use MP4 format for maximum compatibility
+- Store in `/assets/videos/` organized by topic (e.g., `/assets/videos/xcodebuild-mcp/`)
+- Include HTML5 video tags with controls
+- Provide fallback text for accessibility
+
+## SEO and Social
+
+### Meta Description
+- Use the `description` field in front matter
+- Keep under 160 characters
+- Focus on key benefits/learning outcomes
+
+### Social Sharing
+- Configure social accounts in [_config.yml](mdc:_config.yml)
+- Use featured images when possible
+- Include relevant hashtags in content
+
+## Quality Checklist
+
+Before publishing:
+- [ ] Front matter complete and accurate
+- [ ] Drop cap introduction paragraph
+- [ ] Code examples tested and working
+- [ ] Links verified (internal and external)
+- [ ] Images optimized and accessible
+- [ ] Grammar and spelling checked
+- [ ] Technical accuracy verified

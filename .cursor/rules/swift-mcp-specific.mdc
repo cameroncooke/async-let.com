@@ -1,0 +1,183 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Swift & MCP Development Guidelines
+
+## Swift Development Context
+
+This blog focuses heavily on Swift development, iOS apps, and developer tooling. When working with Swift-related content:
+
+### Code Examples
+- Always use Swift syntax highlighting for Swift code blocks
+- Include imports when necessary for context
+- Show both interface and implementation when relevant
+- Use realistic examples that could be part of actual projects
+
+### Swift Topics Covered
+- **Language Features**: async/await, actors, property wrappers, result builders
+- **iOS Development**: SwiftUI, UIKit, Core Data, networking
+- **Developer Tools**: Xcode, Swift Package Manager, build systems
+- **Testing**: XCTest, Swift Testing framework with tags
+
+### Code Style
+```swift
+// Use clear, descriptive naming
+func processUserData(from request: URLRequest) async throws -> UserProfile {
+    // Implementation details
+}
+
+// Show error handling patterns
+do {
+    let result = try await networkService.fetchData()
+    return result
+} catch {
+    logger.error("Failed to fetch data: \(error)")
+    throw NetworkError.requestFailed
+}
+```
+
+## MCP (Model Context Protocol) Focus
+
+### XcodeBuild MCP Server
+This is a primary focus of the blog. When discussing XcodeBuild MCP:
+
+- **Installation**: Prefer `npx -y xcodebuildmcp@latest` approach
+- **Configuration**: Show JSON configuration for various editors
+- **Capabilities**: Build, test, UI automation, project scaffolding, SPM support
+- **Examples**: Include real workflow demonstrations
+
+### MCP Configuration Examples
+```json
+{
+  "mcpServers": {
+    "XcodeBuildMCP": {
+      "command": "npx",
+      "args": ["-y", "xcodebuildmcp@latest"],
+      "env": {
+        "XCODEBUILDMCP_DISABLE_UI_AUTOMATION": "true"
+      }
+    }
+  }
+}
+```
+
+### MCP Development Patterns
+- Server architecture and tool design
+- Protocol implementation details
+- Integration with AI development workflows
+- Performance and reliability considerations
+
+## Development Tools & Workflows
+
+### Swift Package Manager
+- Creating and managing packages
+- Dependency management
+- Build configurations
+- Testing strategies
+
+### Build Systems
+```bash
+# Swift Package Manager commands
+swift build
+swift test
+swift run MyExecutable
+
+# Xcode build system
+xcodebuild -scheme MyApp -destination 'platform=iOS Simulator,name=iPhone 15'
+```
+
+### UI Automation
+- AXe tool integration
+- Simulator control and interaction
+- Coordinate-based automation
+- UI testing patterns
+
+## Technical Writing Style
+
+### Code Documentation
+- Include context about why code works a certain way
+- Show evolution of APIs and best practices
+- Demonstrate practical use cases
+- Include performance considerations when relevant
+
+### Tool Documentation
+- Installation and setup instructions
+- Configuration examples
+- Common usage patterns
+- Troubleshooting guides
+
+### Architecture Discussions
+- System design decisions
+- Trade-offs and alternatives
+- Evolution of tools and approaches
+- Integration patterns
+
+## Content Quality Standards
+
+### Technical Accuracy
+- Verify all code examples compile and run
+- Test tool installations and configurations
+- Check API availability and version compatibility
+- Validate system requirements
+
+### Practical Value
+- Focus on real-world applications
+- Include complete working examples
+- Show integration with existing workflows
+- Demonstrate measurable improvements
+
+### Future-Focused
+- Discuss emerging patterns and technologies
+- Show how tools evolve and improve
+- Consider long-term maintenance and updates
+- Balance innovation with stability
+
+## Swift Development Best Practices
+
+### Modern Swift Patterns
+```swift
+// Use modern concurrency
+actor DataCache {
+    private var cache: [String: Data] = [:]
+    
+    func store(_ data: Data, for key: String) {
+        cache[key] = data
+    }
+    
+    func retrieve(for key: String) -> Data? {
+        cache[key]
+    }
+}
+
+// Property wrappers for common patterns
+@propertyWrapper
+struct UserDefault<T> {
+    let key: String
+    let defaultValue: T
+    
+    var wrappedValue: T {
+        get { UserDefaults.standard.object(forKey: key) as? T ?? defaultValue }
+        set { UserDefaults.standard.set(newValue, forKey: key) }
+    }
+}
+```
+
+### Testing Approaches
+```swift
+// Swift Testing with tags
+import Testing
+
+@Test(.tags(.integration))
+func networkRequestSucceeds() async throws {
+    let response = try await apiClient.fetchUser(id: "123")
+    #expect(response.id == "123")
+}
+```
+
+### Project Organization
+- Follow Apple's conventions for folder structure
+- Use Swift Package Manager for modular architecture
+- Implement proper separation of concerns
+- Consider both app and framework targets

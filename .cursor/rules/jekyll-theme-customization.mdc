@@ -1,0 +1,176 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Jekyll Theme Customization (Long Haul)
+
+## Theme Overview
+
+This site uses the Long Haul Jekyll theme, a minimal, type-focused design optimized for long-form technical content.
+
+### Key Theme Features
+- Minimal, typography-focused design
+- Built with SASS for easy customization
+- SVG social icons
+- Responsive navigation menu
+- RSS feed support via [feed.xml](mdc:feed.xml)
+- Dark mode support via `prefers-color-scheme`
+- Giscus comments integration
+- Drop cap styling for post introductions
+
+## Theme Structure
+
+### Layouts
+- [default.html](mdc:_layouts/default.html) - Base layout with header, footer, and main content area
+- [post.html](mdc:_layouts/post.html) - Blog post layout with date, title, and content
+
+### Includes (Partials)
+- [head.html](mdc:_includes/head.html) - HTML head section with meta tags and CSS
+- [header.html](mdc:_includes/header.html) - Site navigation and branding
+- [footer.html](mdc:_includes/footer.html) - Footer with social links and copyright
+- [google_analytics.html](mdc:_includes/google_analytics.html) - GA tracking code
+- [gisqus_comments.html](mdc:_includes/gisqus_comments.html) - Comments system
+- [scripts.html](mdc:_includes/scripts.html) - JavaScript includes
+
+### Styling Architecture
+- [_config.scss](mdc:_sass/_config.scss) - SASS variables and configuration
+- [_normalize.scss](mdc:_sass/_normalize.scss) - CSS reset/normalize
+- [_sass/breakpoints/](mdc:_sass/breakpoints/) - Responsive breakpoint definitions
+- [_sass/modules/](mdc:_sass/modules/) - Reusable style components
+- [_sass/partials/](mdc:_sass/partials/) - Page-specific styles
+
+## Customization Guidelines
+
+### Color Scheme and Typography
+```scss
+// Modify variables in _config.scss
+$primary-color: #333;
+$accent-color: #2A89CC;
+$text-color: #333;
+$background-color: #fff;
+
+// Typography stack
+$font-stack: 'Crimson Text', serif;
+$code-font: 'Monaco', monospace;
+```
+
+### Layout Customization
+- Modify [default.html](mdc:_layouts/default.html) for site-wide structure changes
+- Update [post.html](mdc:_layouts/post.html) for blog post layout adjustments
+- Edit navigation in [header.html](mdc:_includes/header.html)
+- Customize footer content in [footer.html](mdc:_includes/footer.html)
+
+### Adding New Page Types
+1. Create new layout file in [_layouts/](mdc:_layouts/)
+2. Reference in page front matter: `layout: your-new-layout`
+3. Add corresponding SASS partial if needed
+
+### Social Media Integration
+Configure social accounts in [_config.yml](mdc:_config.yml):
+```yaml
+social:
+    github: cameroncooke
+    twitter: camsoft2000
+    email: hello@cameroncooke.com
+    linkedin: cameroncooke1
+```
+
+## Comment System (Giscus)
+
+### Configuration
+Located in [_config.yml](mdc:_config.yml):
+```yaml
+gisqus:
+    repo: cameroncooke/async-let.com
+    repo_id: R_kgDOORIzXA
+    category: Comments
+    category_id: DIC_kwDOORIzXM4CpHQW
+    mapping: pathname
+    theme: dark_protanopia
+```
+
+### Template
+Comments are included via [gisqus_comments.html](mdc:_includes/gisqus_comments.html) in post layout.
+
+## Performance Optimization
+
+### Asset Optimization
+- SASS compilation with compression: `sass: style: compressed` in [_config.yml](mdc:_config.yml)
+- Image optimization before adding to [assets/](mdc:assets/)
+- Minimal JavaScript footprint
+
+### Build Optimization
+```bash
+# Production build with optimizations
+JEKYLL_ENV=production bundle exec jekyll build
+
+# Enable future posts for preview
+bundle exec jekyll serve --future
+```
+
+## SEO Configuration
+
+### Meta Tags
+Configured in [head.html](mdc:_includes/head.html):
+- Open Graph tags for social sharing
+- Twitter Card meta tags
+- Canonical URLs
+- Structured data for articles
+
+### Analytics
+Google Analytics configured via:
+- GA ID in [_config.yml](mdc:_config.yml): `google_analytics: "G-SF4FBXKHE3"`
+- Tracking code in [google_analytics.html](mdc:_includes/google_analytics.html)
+
+## Responsive Design
+
+### Breakpoints
+Defined in [_sass/breakpoints/](mdc:_sass/breakpoints/):
+- Mobile-first approach
+- Tablet and desktop optimizations
+- Flexible typography scaling
+
+### Navigation
+- Responsive menu in [header.html](mdc:_includes/header.html)
+- Mobile-friendly navigation patterns
+- Touch-friendly interactive elements
+
+## Content Enhancement
+
+### Drop Caps
+Use in post introductions:
+```html
+<p class="intro">
+  <span class="dropcap">F</span>irst letter of introduction...
+</p>
+```
+
+### Code Highlighting
+- Rouge syntax highlighter configured
+- Swift, JSON, bash highlighting support
+- Custom code block styling
+
+### Typography Features
+- Optimized reading experience
+- Proper heading hierarchy
+- Comfortable line spacing and measure
+- Print-friendly styles
+
+## Maintenance Tasks
+
+### Regular Updates
+- Keep Jekyll and gems updated via `bundle update`
+- Monitor theme compatibility with Jekyll versions
+- Update Node.js dependencies for build tools
+
+### Quality Checks
+- Validate HTML output
+- Test responsive design across devices
+- Verify accessibility compliance
+- Check page load performance
+
+### Backup and Version Control
+- All customizations tracked in Git
+- Theme files maintained separately from content
+- Configuration documented in rules and comments

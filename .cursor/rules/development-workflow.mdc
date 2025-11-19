@@ -1,0 +1,145 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Development Workflow
+
+**📋 Commands Reference: [CLAUDE.md](mdc:CLAUDE.md)**
+
+For authoritative command reference and development procedures, always check [CLAUDE.md](mdc:CLAUDE.md).
+
+## Local Development Setup
+
+### Prerequisites
+- Ruby (for Jekyll) - version specified in [.ruby-version](mdc:.ruby-version)
+- Node.js (for build tools) - for Gulp, SASS compilation, and BrowserSync
+- Bundler for Ruby dependency management
+
+### Initial Setup
+```bash
+# Install Ruby dependencies (required after cloning or Gemfile changes)
+bundle install
+
+# Install Node.js dependencies (for build tools)
+npm install
+
+# Start development server (serves locally on port 4000 with auto-reload)
+bundle exec jekyll serve -w
+```
+
+### Development Server
+- Local development: `http://localhost:4000`
+- Auto-regeneration enabled with `-w` flag
+- LiveReload available through BrowserSync (if using Gulp workflow)
+
+## File Structure for Development
+
+### Configuration Files
+- [_config.yml](mdc:_config.yml) - Main Jekyll configuration
+- [Gemfile](mdc:Gemfile) - Ruby dependencies
+- [package.json](mdc:package.json) - Node.js build tools
+- [.gitignore](mdc:.gitignore) - Files to exclude from version control
+
+### Content Development
+- **New Posts**: Create in [_posts/](mdc:_posts/) with proper naming convention
+- **Draft Posts**: Use [_drafts/](mdc:_drafts/) for work-in-progress content
+- **Static Pages**: Update [index.html](mdc:index.html), [about.md](mdc:about.md), etc.
+
+### Theme Customization
+- **Layouts**: Modify [_layouts/](mdc:_layouts/) for page structure changes
+- **Includes**: Update [_includes/](mdc:_includes/) for reusable components
+- **Styles**: Edit [_sass/](mdc:_sass/) files for visual changes
+- **Assets**: Add images/videos to [assets/](mdc:assets/)
+
+## Build Process
+
+### Jekyll Build
+```bash
+# Development build
+bundle exec jekyll build
+
+# Production build (with environment variables)
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
+### Asset Pipeline (Optional Gulp Workflow)
+```bash
+# Watch for SASS changes and auto-compile
+gulp watch
+
+# Production build with minification
+gulp build
+```
+
+### Generated Output
+- Static site generated in [_site/](mdc:_site/) directory
+- Assets compiled and optimized
+- RSS feed generated at `/feed.xml`
+
+## Content Workflow
+
+### Writing Process
+1. Create draft in [_drafts/](mdc:_drafts/)
+2. Preview with `bundle exec jekyll serve --drafts`
+3. Move to [_posts/](mdc:_posts/) with date prefix when ready
+4. Test locally before committing
+
+### Media Management
+- Optimize images before adding to [assets/](mdc:assets/)
+- Use descriptive filenames for SEO
+- Compress videos for web delivery
+- Test media on different devices/browsers
+
+## Deployment
+
+### GitHub Pages
+- Automatic deployment from main branch via GitHub Actions
+- Uses `jekyll-gh-pages.yml` workflow for building and deployment
+- Custom domain: www.async-let.com (configured via [CNAME](mdc:CNAME))
+- **Twitter Integration**: Daily cron job automatically tweets new posts
+
+### Manual Deployment
+```bash
+# Build for production
+JEKYLL_ENV=production bundle exec jekyll build
+
+# Deploy _site/ directory to hosting provider
+```
+
+## Quality Assurance
+
+### Local Testing
+- Test all internal links work correctly
+- Verify responsive design on different screen sizes
+- Check page load performance
+- Validate HTML/CSS
+- Test RSS feed validity
+
+### Pre-deployment Checklist
+- [ ] All posts have proper front matter
+- [ ] Images optimized and accessible
+- [ ] Links tested (internal and external)
+- [ ] Mobile responsiveness verified
+- [ ] Performance acceptable
+- [ ] SEO metadata complete
+
+## Troubleshooting
+
+### Common Issues
+- **Bundle install fails**: Check Ruby version matches [.ruby-version](mdc:.ruby-version)
+- **Jekyll serve fails**: Clear [_site/](mdc:_site/) and [.jekyll-cache/](mdc:.jekyll-cache/)
+- **SASS compilation errors**: Check syntax in [_sass/](mdc:_sass/) files
+- **Asset loading issues**: Verify paths in [_config.yml](mdc:_config.yml)
+
+### Debug Commands
+```bash
+# Verbose Jekyll build
+bundle exec jekyll build --verbose
+
+# Check for broken links (if plugin installed)
+bundle exec jekyll build && htmlproofer ./_site
+
+# Clear all caches
+rm -rf _site .jekyll-cache
+```
