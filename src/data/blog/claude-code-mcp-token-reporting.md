@@ -14,6 +14,8 @@ tags:
 
 A common criticism of MCP servers is that they consume too much context window, leaving little room for actual work. But is this bloat real, or just a reporting error? I captured raw API calls and replicated Claude Code's counting logic to find out.
 
+> **Update 22 January 2026: Anthropic appeared to have fixed the issue in the latest version of Claude Code.** The `/context` command now reports the correct token usage for XcodeBuildMCP. With all tools enabled including new debugger tools the total token usage is now 12.6k tokens.
+
 ## TL;DR
 
 - **Double Counting**: Claude Code sums token usage per tool, inadvertently counting shared system instructions multiple times.
