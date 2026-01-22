@@ -31,16 +31,16 @@ Key paths
 ## Local development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 # open http://localhost:4321
 ```
 
 Production build and preview
 
 ```bash
-npm run build
-npm run preview
+pnpm run build
+pnpm run preview
 ```
 
 ## Writing posts and images
